@@ -1,0 +1,93 @@
+{
+	"info": {
+		"_postman_id": "bb559955-8ea9-41b7-8936-a5f611854b62",
+		"name": "assessment : Assessment Controller",
+		"description": "assessment : Assessment Controller",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "assessment/abandonBMAssessment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ac89bdf6-2b41-49fc-a2a4-a40b4aaa902b",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"timestamp\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"response should be okay to process\", function () { ",
+							"    pm.response.to.not.be.error; ",
+							"    pm.response.to.have.jsonBody({\"timestamp\": \"2018-08-24T06:07:47.763+0000\",",
+							"    \"status\": 400,",
+							"    \"error\": \"Bad Request\",",
+							"    \"message\": \"JSON parse error: Cannot deserialize value of type `java.util.Date` from String \\\"yyyy-MM-dd'T'HH:mm:ss\\\": expected format \\\"yyyy-MM-dd'T'HH:mm:ss\\\"; nested exception is com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot deserialize value of type `java.util.Date` from String \\\"yyyy-MM-dd'T'HH:mm:ss\\\": expected format \\\"yyyy-MM-dd'T'HH:mm:ss\\\"\\n at [Source: (PushbackInputStream); line: 8, column: 23] (through reference chain: com.pearson.dra3.to.DRA3BMAssessmentRequest[\\\"bmAssessment\\\"]->com.pearson.dra3.entity.AssessmentInstanceExtDra3BM[\\\"assessmentDate\\\"])\",",
+							"    \"path\": \"/dra3-service/assessment/abandonBMAssessment\"",
+							"}); ",
+							"    pm.response.to.not.have.jsonBody(\"error\"); ",
+							"    ",
+							"    ",
+							"    ",
+							"    ",
+							"    ",
+							"    ",
+							"    ",
+							"    ",
+							"    pm.test(\"response must be valid and have a body\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+							"});",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"accountId\": 0,\r\n  \"bmAssessment\": {\r\n    \"academicYearLabel\": \"string\",\r\n    \"accountLvlAcademicYearId\": 0,\r\n    \"accountLvlPeriodId\": 0,\r\n    \"assessedBy\": \"string\",\r\n    \"assessmentDate\": \"yyyy-MM-dd'T'HH:mm:ss\",\r\n    \"bookTitleCode\": \"string\",\r\n    \"createDate\": \"yyyy-MM-dd'T'HH:mm:ss\",\r\n    \"enrollOrgId\": 0,\r\n    \"genre\": \"string\",\r\n    \"id\": 0,\r\n    \"isAbandoned\": true,\r\n    \"isBookSelectedByStudent\": true,\r\n    \"isBookSelectedByTeacher\": true,\r\n    \"isRealTimeMode\": true,\r\n    \"isReassessRecommendationOverridden\": true,\r\n    \"isReassessRecommended\": true,\r\n    \"lastUpdatedBy\": \"string\",\r\n    \"levelTested\": \"string\",\r\n    \"meetsBmk\": true,\r\n    \"meetsBmkDefault\": true,\r\n    \"meetsTargetPerf\": true,\r\n    \"meetsTargetPerfDefault\": true,\r\n    \"meetsTargetReadingLevel\": true,\r\n    \"meetsTargetReadingLevelDefault\": true,\r\n    \"modifiedDate\": \"yyyy-MM-dd'T'HH:mm:ss\",\r\n    \"orfScore\": {\r\n      \"accuracy\": 0,\r\n      \"assessmentSubtestRawScoreId\": 0,\r\n      \"id\": 0,\r\n      \"mcScore\": 0,\r\n      \"mcScoreLabel\": \"string\",\r\n      \"meetsTargetMC\": true,\r\n      \"meetsTargetMCDefault\": true,\r\n      \"meetsTargetPA\": true,\r\n      \"meetsTargetPADefault\": true,\r\n      \"meetsTargetTIME\": true,\r\n      \"meetsTargetTIMEDefault\": true,\r\n      \"meetsTargetWPM\": true,\r\n      \"meetsTargetWPMDefault\": true,\r\n      \"miscueCount\": 0,\r\n      \"paScore\": 0,\r\n      \"paScoreLabel\": \"string\",\r\n      \"timeScore\": 0,\r\n      \"timeScoreLabel\": \"string\",\r\n      \"timeTakenInSeconds\": 0,\r\n      \"wordsRead\": 0,\r\n      \"wpm\": 0,\r\n      \"wpmScore\": 0,\r\n      \"wpmScoreLabel\": \"string\"\r\n    },\r\n    \"overallMeetsCompletionCriteria\": true,\r\n    \"overallScore\": 0,\r\n    \"overallScoreLabel\": \"string\",\r\n    \"periodCode\": \"string\",\r\n    \"productCode\": \"string\",\r\n    \"studentAssessmentGrade\": \"string\",\r\n    \"studentId\": 0,\r\n    \"submitted\": true,\r\n    \"subtestDerivedScoreMap\": {},\r\n    \"subtestRawScoreMap\": {},\r\n    \"targetPerfOrgId\": 0,\r\n    \"targetReadingLevelOrgId\": 0\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "http://172.21.74.203:8762/dra3-service/assessment/abandonBMAssessment",
+					"protocol": "http",
+					"host": [
+						"172",
+						"21",
+						"74",
+						"203"
+					],
+					"port": "8762",
+					"path": [
+						"dra3-service",
+						"assessment",
+						"abandonBMAssessment"
+					]
+				},
+				"description": "assessment/abandonBMAssessment"
+			},
+			"response": []
+		}
+	]
+}
